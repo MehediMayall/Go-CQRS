@@ -17,19 +17,19 @@ func NewMovieReadRepository(db *database.InMemoryDB) MovieReadRepository {
 	}
 }
 
-func (r *MovieReadRepository) GetAll() ([]entities.Movie, error) {
+func (r *MovieReadRepository) GetAll() (*[]entities.Movie, error) {
 	movies := []entities.Movie{}
 	for _, value := range r.db.Movies {
 		movies = append(movies, value)
 	}
-	return movies, nil
+	return &movies, nil
 }
 
-func (r *MovieReadRepository) GetById(movieId string) (entities.Movie, error) {
+func (r *MovieReadRepository) GetById(movieId string) (*entities.Movie, error) {
 
 	movie := r.db.Movies[movieId]
-	if &movie == nil {
-		return movie, errors.New("There is no movie exists with Id: " + movieId)
+	if movie.Id == "" {
+		return nil, errors.New("There is no movie exists with Id: " + movieId)
 	}
-	return movie, nil
+	return &movie, nil
 }

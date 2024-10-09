@@ -4,15 +4,16 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/mehedimayall/go-cqrs/internal/entities"
 	"github.com/mehedimayall/go-cqrs/internal/handlers/queries"
 	repositories "github.com/mehedimayall/go-cqrs/internal/repositories/abstractions"
 )
 
 type MovieReadController struct {
-	repo repositories.IReadRepository
+	repo repositories.IReadRepository[entities.Movie]
 }
 
-func NewMovieReadController(repo repositories.IReadRepository) MovieReadController {
+func NewMovieReadController(repo repositories.IReadRepository[entities.Movie]) MovieReadController {
 	return MovieReadController{
 		repo: repo,
 	}

@@ -1,6 +1,6 @@
 package repositories
 
-type IReadRepository interface {
-	GetAll() (*[]interface{}, error)
-	GetById(id string) (*interface{}, error)
+type IReadRepository[T any] interface {
+	GetAll() (*[]T, error)
+	GetById(id string) (*T, error)
 }

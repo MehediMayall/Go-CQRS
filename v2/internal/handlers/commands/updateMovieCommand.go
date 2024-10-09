@@ -6,10 +6,10 @@ import (
 )
 
 type UpdateMovieCommand struct {
-	repo repositories.IWriteRepository
+	repo repositories.IWriteRepository[entities.Movie]
 }
 
-func NewUpdateMovieCommand(repo repositories.IWriteRepository) *UpdateMovieCommand {
+func NewUpdateMovieCommand(repo repositories.IWriteRepository[entities.Movie]) *UpdateMovieCommand {
 	return &UpdateMovieCommand{
 		repo: repo,
 	}

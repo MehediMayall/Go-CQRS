@@ -1,7 +1,7 @@
 package repositories
 
-type IWriteRepository interface {
-	Add(interface{}) error
-	Update(interface{}) error
+type IWriteRepository[T any] interface {
+	Add(*T) error
+	Update(*T) error
 	Delete(id string) error
 }

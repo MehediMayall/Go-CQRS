@@ -12,5 +12,5 @@ func (app *App) CreateWriteMovieController() controllers.MovieWriteController {
 
 func (app *App) CreateReadMovieController() controllers.MovieReadController {
 	repo := repositories.NewMovieReadRepository(app.db)
-	return controllers.NewMovieReadController(repo)
+	return controllers.NewMovieReadController(&repo)
 }

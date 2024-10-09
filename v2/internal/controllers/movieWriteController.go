@@ -10,10 +10,10 @@ import (
 )
 
 type MovieWriteController struct {
-	repo repositories.IWriteRepository
+	repo repositories.IWriteRepository[entities.Movie]
 }
 
-func NewMovieController(repo repositories.IWriteRepository) MovieWriteController {
+func NewMovieController(repo repositories.IWriteRepository[entities.Movie]) MovieWriteController {
 	return MovieWriteController{
 		repo: repo,
 	}
