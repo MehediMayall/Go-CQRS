@@ -28,12 +28,12 @@ func (c *MovieWriteController) Add(ctx *fiber.Ctx) error {
 	}
 
 	command := commands.NewAddMovieCommand(c.repo)
-	err := command.Handle(&movie)
+	movieId, err := command.Handle(&movie)
 	if err != nil {
 		return ctx.Status(http.StatusInternalServerError).JSON(err.Error())
 	}
 
-	return ctx.Status(http.StatusOK).JSON("Successfull")
+	return Ok(ctx, movieId)
 }
 
 // Update Movie
@@ -50,7 +50,7 @@ func (c *MovieWriteController) Update(ctx *fiber.Ctx) error {
 		return ctx.Status(http.StatusInternalServerError).JSON(err.Error())
 	}
 
-	return ctx.Status(http.StatusOK).JSON("Successfull")
+	return Ok(ctx, "")
 }
 
 // Delete Movie
@@ -67,5 +67,5 @@ func (c *MovieWriteController) Delete(ctx *fiber.Ctx) error {
 		return ctx.Status(http.StatusInternalServerError).JSON(err.Error())
 	}
 
-	return ctx.Status(http.StatusOK).JSON("Successfull")
+	return Ok(ctx, "")
 }

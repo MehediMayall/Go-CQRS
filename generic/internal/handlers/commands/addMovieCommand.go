@@ -15,6 +15,7 @@ func NewAddMovieCommand(repo repositories.IWriteRepository[entities.Movie]) AddM
 	}
 }
 
-func (handler *AddMovieCommand) Handle(movie *entities.Movie) error {
-	return handler.repo.Add(movie)
+func (handler *AddMovieCommand) Handle(movie *entities.Movie) (string, error) {
+	handler.repo.Add(movie)
+	return movie.Id, nil
 }

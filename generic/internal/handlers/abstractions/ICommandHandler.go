@@ -1,5 +1,5 @@
 package abstractions
 
-type ICommandHandler interface {
-	Handle() error
+type ICommandHandler[T any] interface {
+	Handle() (T, error)
 }
