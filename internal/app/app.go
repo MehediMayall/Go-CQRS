@@ -18,7 +18,7 @@ func Run() {
 
 	// Server
 	server := fiber.New()
-	server.Group("/api")
+	// server.Group("/api")
 
 	// Register Routes
 	app.RegisterMovieRoutes(server)
