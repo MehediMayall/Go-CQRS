@@ -1,4 +1,4 @@
-package commands
+package queries
 
 import (
 	"github.com/mehedimayall/go-cqrs/internal/entities"

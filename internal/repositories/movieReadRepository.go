@@ -17,7 +17,7 @@ func NewMovieReadRepository(db *database.InMemoryDB) *MovieReadRepository {
 	}
 }
 
-func (r *MovieReadRepository) GetMovies() (*[]entities.Movie, error) {
+func (r *MovieReadRepository) GetAll() (*[]entities.Movie, error) {
 	movies := []entities.Movie{}
 	for _, value := range r.db.Movies {
 		movies = append(movies, value)
