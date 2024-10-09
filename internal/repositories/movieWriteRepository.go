@@ -1,6 +1,8 @@
 package repositories
 
 import (
+	"log"
+
 	"github.com/google/uuid"
 	"github.com/mehedimayall/go-cqrs/internal/database"
 	"github.com/mehedimayall/go-cqrs/internal/entities"
@@ -20,6 +22,7 @@ func NewMovieWriteRepository(db *database.InMemoryDB) *MovieWriteRepository {
 func (repo *MovieWriteRepository) Add(movie *entities.Movie) error {
 	movie.Id = uuid.NewString()
 	repo.db.Movies[movie.Id] = *movie
+	log.Println(repo.db)
 	return nil
 }
 
