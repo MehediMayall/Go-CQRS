@@ -58,7 +58,7 @@ Every functions in this file is used to instantiate the dependent objects and in
 ### Dependency Flow
 ![Dependency Flow](https://github.com/user-attachments/assets/8c1ca414-d653-4500-8c23-047a80972ce9)
 
-### Loose Coupling Through Mediator Pattern 
+### Loose Coupling Through Object Composition
 Here is an example of how an update operation functions in a loosely coupled manner.
 ![Loose Coupling](https://github.com/user-attachments/assets/76e6093c-42d1-4361-8633-8e98f072961c)
 
