@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"net/http"
+	"errors"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/mehedimayall/go-cqrs/internal/entities"
@@ -19,26 +19,31 @@ func NewMovieReadController(repo repositories.IReadRepository[entities.Movie]) M
 	}
 }
 
+// GET ALL MOVIES
 func (c *MovieReadController) GetAll(ctx *fiber.Ctx) error {
 	query := queries.NewGetMoviesQuery(c.repo)
 	result, err := query.Handle()
 
 	if err != nil {
-		return ctx.Status(http.StatusInternalServerError).JSON(err.Error())
+		return ServerError(ctx, err)
 	}
 
-	return ctx.Status(http.StatusOK).JSON(result)
+	return Ok(ctx, result)
 }
 
+// GET A MOVIE
 func (c *MovieReadController) GetById(ctx *fiber.Ctx) error {
 	movieId := ctx.Params("id")
+	if movieId == "" {
+		return NotFound(ctx, errors.New("please provide a valid movie id"))
+	}
 
 	query := queries.NewGetMovieByIdQuery(c.repo)
 	result, err := query.Handle(movieId)
 
 	if err != nil {
-		return ctx.Status(http.StatusInternalServerError).JSON(err.Error())
+		return ServerError(ctx, err)
 	}
 
-	return ctx.Status(http.StatusOK).JSON(result)
+	return Ok(ctx, result)
 }

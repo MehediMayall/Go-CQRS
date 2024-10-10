@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"net/http"
+	"errors"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/mehedimayall/go-cqrs/internal/entities"
@@ -19,52 +19,52 @@ func NewMovieController(repo repositories.IWriteRepository[entities.Movie]) Movi
 	}
 }
 
-// Save Movie
+// Save a Movie
 func (c *MovieWriteController) Add(ctx *fiber.Ctx) error {
 	movie := entities.Movie{}
 
 	if err := ctx.BodyParser(&movie); err != nil {
-		return ctx.Status(http.StatusBadRequest).JSON(err.Error())
+		return BadRequest(ctx, err)
 	}
 
 	command := commands.NewAddMovieCommand(c.repo)
 	movieId, err := command.Handle(&movie)
 	if err != nil {
-		return ctx.Status(http.StatusInternalServerError).JSON(err.Error())
+		return ServerError(ctx, err)
 	}
 
 	return Ok(ctx, movieId)
 }
 
-// Update Movie
+// Update a Movie
 func (c *MovieWriteController) Update(ctx *fiber.Ctx) error {
 	movie := entities.Movie{}
 
 	if err := ctx.BodyParser(&movie); err != nil {
-		return ctx.Status(http.StatusBadRequest).JSON(err.Error())
+		return BadRequest(ctx, err)
 	}
 
 	command := commands.NewUpdateMovieCommand(c.repo)
 	err := command.Handle(&movie)
 	if err != nil {
-		return ctx.Status(http.StatusInternalServerError).JSON(err.Error())
+		return ServerError(ctx, err)
 	}
 
 	return Ok(ctx, "")
 }
 
-// Delete Movie
+// Delete a Movie
 func (c *MovieWriteController) Delete(ctx *fiber.Ctx) error {
 	movieId := ctx.Params("id")
 
 	if movieId == "" {
-		return ctx.Status(http.StatusBadRequest).JSON("Please provide a valid movie id")
+		return NotFound(ctx, errors.New("please provide a valid movie id"))
 	}
 
 	command := commands.NewDeleteMovieCommand(c.repo)
 	err := command.Handle(movieId)
 	if err != nil {
-		return ctx.Status(http.StatusInternalServerError).JSON(err.Error())
+		return ServerError(ctx, err)
 	}
 
 	return Ok(ctx, "")
