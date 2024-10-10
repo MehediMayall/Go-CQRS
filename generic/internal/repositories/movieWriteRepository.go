@@ -2,6 +2,7 @@ package repositories
 
 import (
 	"log"
+	"time"
 
 	"github.com/google/uuid"
 	"github.com/mehedimayall/go-cqrs/internal/database"
@@ -19,6 +20,8 @@ func NewMovieWriteRepository(db *database.InMemoryDB) *MovieWriteRepository {
 // INSERT
 func (repo *MovieWriteRepository) Add(movie *entities.Movie) error {
 	movie.Id = uuid.NewString()
+	movie.CreatedOn = time.Now()
+
 	repo.db.Movies[movie.Id] = *movie
 	log.Println(repo.db)
 	return nil
@@ -26,6 +29,7 @@ func (repo *MovieWriteRepository) Add(movie *entities.Movie) error {
 
 // UPDATE
 func (repo *MovieWriteRepository) Update(movie *entities.Movie) error {
+	movie.UpdatedOn = time.Now()
 	repo.db.Movies[movie.Id] = *movie
 	return nil
 }

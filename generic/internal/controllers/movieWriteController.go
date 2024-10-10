@@ -10,11 +10,15 @@ import (
 )
 
 type MovieWriteController struct {
-	repo repositories.IWriteRepository[entities.Movie]
+	repo     repositories.IWriteRepository[entities.Movie]
+	readRepo repositories.IReadRepository[entities.Movie]
 }
 
-func NewMovieController(repo repositories.IWriteRepository[entities.Movie]) MovieWriteController {
-	return MovieWriteController{repo}
+func NewMovieController(
+	repo repositories.IWriteRepository[entities.Movie],
+	readRepo repositories.IReadRepository[entities.Movie]) MovieWriteController {
+
+	return MovieWriteController{repo, readRepo}
 }
 
 // Save a Movie
@@ -42,7 +46,7 @@ func (c *MovieWriteController) Update(ctx *fiber.Ctx) error {
 		return BadRequest(ctx, err)
 	}
 
-	command := commands.NewUpdateMovieCommand(c.repo)
+	command := commands.NewUpdateMovieCommand(c.repo, c.readRepo)
 	err := command.Handle(&movie)
 	if err != nil {
 		return ServerError(ctx, err)

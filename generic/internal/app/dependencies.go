@@ -7,7 +7,8 @@ import (
 
 func (app *App) CreateWriteMovieController() controllers.MovieWriteController {
 	movieRepo := repositories.NewMovieWriteRepository(app.db)
-	return controllers.NewMovieController(movieRepo)
+	movieReadRepo := repositories.NewMovieReadRepository(app.db)
+	return controllers.NewMovieController(movieRepo, &movieReadRepo)
 }
 
 func (app *App) CreateReadMovieController() controllers.MovieReadController {

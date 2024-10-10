@@ -6,13 +6,27 @@ import (
 )
 
 type UpdateMovieCommandHandler struct {
-	repo repositories.IWriteRepository[entities.Movie]
+	repo     repositories.IWriteRepository[entities.Movie]
+	readRepo repositories.IReadRepository[entities.Movie]
 }
 
-func NewUpdateMovieCommand(repo repositories.IWriteRepository[entities.Movie]) *UpdateMovieCommandHandler {
-	return &UpdateMovieCommandHandler{repo}
+func NewUpdateMovieCommand(
+	repo repositories.IWriteRepository[entities.Movie],
+	readRepo repositories.IReadRepository[entities.Movie]) *UpdateMovieCommandHandler {
+
+	return &UpdateMovieCommandHandler{repo, readRepo}
 }
 
 func (handler *UpdateMovieCommandHandler) Handle(movie *entities.Movie) error {
-	return handler.repo.Update(movie)
+	existingMovie, err := handler.readRepo.GetById(movie.Id)
+	if err != nil {
+		return err
+	}
+
+	existingMovie.Name = movie.Name
+	existingMovie.Director = movie.Director
+	existingMovie.Country = movie.Country
+	existingMovie.Rating = movie.Rating
+
+	return handler.repo.Update(existingMovie)
 }
