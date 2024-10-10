@@ -10,9 +10,7 @@ type DeleteMovieCommandHandler struct {
 }
 
 func NewDeleteMovieCommand(repo repositories.IWriteRepository[entities.Movie]) *DeleteMovieCommandHandler {
-	return &DeleteMovieCommandHandler{
-		repo: repo,
-	}
+	return &DeleteMovieCommandHandler{repo}
 }
 
 func (handler *DeleteMovieCommandHandler) Handle(movieId string) error {

@@ -14,9 +14,7 @@ type MovieWriteController struct {
 }
 
 func NewMovieController(repo repositories.IWriteRepository[entities.Movie]) MovieWriteController {
-	return MovieWriteController{
-		repo: repo,
-	}
+	return MovieWriteController{repo}
 }
 
 // Save a Movie

@@ -10,9 +10,7 @@ type UpdateMovieCommandHandler struct {
 }
 
 func NewUpdateMovieCommand(repo repositories.IWriteRepository[entities.Movie]) *UpdateMovieCommandHandler {
-	return &UpdateMovieCommandHandler{
-		repo: repo,
-	}
+	return &UpdateMovieCommandHandler{repo}
 }
 
 func (handler *UpdateMovieCommandHandler) Handle(movie *entities.Movie) error {

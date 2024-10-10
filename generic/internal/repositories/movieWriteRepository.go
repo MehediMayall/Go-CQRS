@@ -13,9 +13,7 @@ type MovieWriteRepository struct {
 }
 
 func NewMovieWriteRepository(db *database.InMemoryDB) *MovieWriteRepository {
-	return &MovieWriteRepository{
-		db: db,
-	}
+	return &MovieWriteRepository{db}
 }
 
 // INSERT

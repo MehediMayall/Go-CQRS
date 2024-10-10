@@ -14,9 +14,7 @@ type MovieReadController struct {
 }
 
 func NewMovieReadController(repo repositories.IReadRepository[entities.Movie]) MovieReadController {
-	return MovieReadController{
-		repo: repo,
-	}
+	return MovieReadController{repo}
 }
 
 // GET ALL MOVIES

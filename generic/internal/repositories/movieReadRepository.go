@@ -12,9 +12,7 @@ type MovieReadRepository struct {
 }
 
 func NewMovieReadRepository(db *database.InMemoryDB) MovieReadRepository {
-	return MovieReadRepository{
-		db: db,
-	}
+	return MovieReadRepository{db}
 }
 
 func (r *MovieReadRepository) GetAll() (*[]entities.Movie, error) {

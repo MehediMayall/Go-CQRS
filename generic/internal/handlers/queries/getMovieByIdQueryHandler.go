@@ -10,9 +10,7 @@ type GetMovieByIdQueryHandler struct {
 }
 
 func NewGetMovieByIdQuery(repo repositories.IReadRepository[entities.Movie]) *GetMovieByIdQueryHandler {
-	return &GetMovieByIdQueryHandler{
-		repo: repo,
-	}
+	return &GetMovieByIdQueryHandler{repo}
 }
 
 func (handler *GetMovieByIdQueryHandler) Handle(movieId string) (*entities.Movie, error) {

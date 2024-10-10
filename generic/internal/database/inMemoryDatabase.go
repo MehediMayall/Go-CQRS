@@ -7,7 +7,5 @@ type InMemoryDB struct {
 }
 
 func NewDB() *InMemoryDB {
-	return &InMemoryDB{
-		Movies: map[string]entities.Movie{},
-	}
+	return &InMemoryDB{map[string]entities.Movie{}}
 }
