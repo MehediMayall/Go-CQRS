@@ -3,10 +3,10 @@ A straightforward Go app that demonstrates the implementation of CQRS (Command Q
 ![CQRS Architecture](https://github.com/user-attachments/assets/8e889640-63b5-4873-a91e-737aa115a5a3)
 
 ***ReadRepository*** has only one responsibility that is to read data from database.
-It is used to transfer data from database to application as efficient as possible without changing it states 
+It is used to transfer data from database to the application as efficient as possible without changing its state
 
 ***WriteRepository*** has only one responsibility that is to write data to database.
-It is used to transfer data from application to database in more generic ways. 
+It is used to transfer data from application to the database in more generic ways. 
 
 
 ### Folder Structure
