@@ -4,16 +4,19 @@ A straightforward Go app that demonstrates the implementation of CQRS (Command Q
 
 
 ## Folder Structure
-$ ./tree-md .
-# Project Tree
-.
-* [tree-md](./tree-md)
-* [internal](./internal)
-    * [app](./internal/app)
-    * [controllers](./internal/controllers)
-    * [database](./internal/database)
-    * [entities](./internal/entities)
-    * [handlers](./internal/handlers)
-    * [repositories](./internal/repositories)
-*[cmd](./cmd)
-    * [main.go](./cmd/main.go)
+   * [cmd](./cmd)
+       * [main.go](./cmd/main.go)
+   * [internal](./internal)
+       * [app](./internal/app)
+         * [app.go](./app/app.go)
+         * [dependencies.go](./app/dependencies.go)
+         * [routes.go](./app/routes.go)
+       * [controllers](./internal/controllers)
+         *[movieReadController.go](./controllers/movieReadController.go)
+         *[movieWriteController.go](./controllers/movieWriteController.go)
+         *[response.go](./controllers/response.go)
+       * [database](./internal/database)
+       * [entities](./internal/entities)
+       * [handlers](./internal/handlers)
+       * [repositories](./internal/repositories)
+
