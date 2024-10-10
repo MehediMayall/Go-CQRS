@@ -37,4 +37,5 @@ A straightforward Go app that demonstrates the implementation of CQRS (Command Q
            * [IWriteRepository.go](./abstractions/IWriteRepository.go)
          * [movieReadRepository.go](./repositories/movieReadRepository.go)
          * [movieWriteRepository.go](./repositories/movieWriteRepository.go)
+     * [README.go](./README.md)
 
