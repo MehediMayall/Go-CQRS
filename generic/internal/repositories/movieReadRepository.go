@@ -1,3 +1,6 @@
+// MovieReadRepository has only one responsibility that is to read data from database.
+// It is used to transfer data from database to application as efficient as possible without changing it states
+
 package repositories
 
 import (

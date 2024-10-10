@@ -1,3 +1,7 @@
+// Manual Dependency Injection. This go file manages the dependencies of the application.
+// Every functions in this file is used to instantiate the dependent objects and
+// inject them into the parent object through constructor injection
+
 package app
 
 import (
