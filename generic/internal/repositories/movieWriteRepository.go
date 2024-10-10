@@ -1,4 +1,4 @@
-// MovieWriteRepository has only one responsibility that is to write data to the database.
+// MovieWriteRepository has only one responsibility that is all of its methods are used to write data to the database.
 // It is used to transfer data from application to database in more generic ways.
 
 package repositories
