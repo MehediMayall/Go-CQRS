@@ -2,15 +2,6 @@
 A straightforward Go app that demonstrates the implementation of CQRS (Command Query Responsibility Segregation) without requiring any library.
 ![CQRS Architecture](https://github.com/user-attachments/assets/8e889640-63b5-4873-a91e-737aa115a5a3)
 
-***ReadRepository*** has only one responsibility that is to read data from database.
-It is used to transfer data from database to the application as efficient as possible without changing its state
-
-***WriteRepository*** has only one responsibility that is to write data to database.
-It is used to transfer data from application to the database in more generic ways. 
-
-***Manual Dependency Injection***  [dependencies.go] file manages the dependencies of the application.
-Every functions in this file is used to instantiate the dependent objects and inject them into the parent object through constructor injection.
-
 
 ### Folder Structure
 ```md
@@ -54,3 +45,12 @@ Every functions in this file is used to instantiate the dependent objects and in
 │       └── movieWriteRepository.go
 
 ```
+
+***ReadRepository*** has only one responsibility that is to read data from database.
+It is used to transfer data from database to the application as efficient as possible without changing its state
+
+***WriteRepository*** has only one responsibility that is to write data to database.
+It is used to transfer data from application to the database in more generic ways. 
+
+***Manual Dependency Injection***  [dependencies.go] file manages the dependencies of the application.
+Every functions in this file is used to instantiate the dependent objects and inject them into the parent object through constructor injection.
