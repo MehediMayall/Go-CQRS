@@ -47,7 +47,7 @@ A straightforward Go app that demonstrates the implementation of CQRS (Command Q
 ```
 
 ***ReadRepository*** has only one responsibility that is all of its methods are used to read data from the database.
-It is used to transfer data from database to the application as efficient as possible without changing its state
+It is used to transfer data from database to the application as efficient as possible without changing its state.
 
 ***WriteRepository*** has only one responsibility that is all of its methods are used to write data to the database.
 It is used to transfer data from application to the database in more generic ways. 
@@ -57,3 +57,8 @@ Every functions in this file is used to instantiate the dependent objects and in
 
 ### Dependency Flow
 ![Dependency Flow](https://github.com/user-attachments/assets/8c1ca414-d653-4500-8c23-047a80972ce9)
+
+### Loose Coupling Through Mediator Pattern 
+Here is an example of how an update operation functions in loosely coupled manner.
+![Loose Coupling](https://github.com/user-attachments/assets/41a36ad2-96cf-4514-88f2-536a25abf0c6)
+
