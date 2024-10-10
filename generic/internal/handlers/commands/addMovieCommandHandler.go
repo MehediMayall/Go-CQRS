@@ -5,17 +5,17 @@ import (
 	repositories "github.com/mehedimayall/go-cqrs/internal/repositories/abstractions"
 )
 
-type AddMovieCommand struct {
+type AddMovieCommandHandler struct {
 	repo repositories.IWriteRepository[entities.Movie]
 }
 
-func NewAddMovieCommand(repo repositories.IWriteRepository[entities.Movie]) AddMovieCommand {
-	return AddMovieCommand{
+func NewAddMovieCommand(repo repositories.IWriteRepository[entities.Movie]) AddMovieCommandHandler {
+	return AddMovieCommandHandler{
 		repo: repo,
 	}
 }
 
-func (handler *AddMovieCommand) Handle(movie *entities.Movie) (string, error) {
+func (handler *AddMovieCommandHandler) Handle(movie *entities.Movie) (string, error) {
 	handler.repo.Add(movie)
 	return movie.Id, nil
 }

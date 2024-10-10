@@ -5,16 +5,16 @@ import (
 	repositories "github.com/mehedimayall/go-cqrs/internal/repositories/abstractions"
 )
 
-type GetMovieByIdQuery struct {
+type GetMovieByIdQueryHandler struct {
 	repo repositories.IReadRepository[entities.Movie]
 }
 
-func NewGetMovieByIdQuery(repo repositories.IReadRepository[entities.Movie]) *GetMovieByIdQuery {
-	return &GetMovieByIdQuery{
+func NewGetMovieByIdQuery(repo repositories.IReadRepository[entities.Movie]) *GetMovieByIdQueryHandler {
+	return &GetMovieByIdQueryHandler{
 		repo: repo,
 	}
 }
 
-func (handler *GetMovieByIdQuery) Handle(movieId string) (*entities.Movie, error) {
+func (handler *GetMovieByIdQueryHandler) Handle(movieId string) (*entities.Movie, error) {
 	return handler.repo.GetById(movieId)
 }

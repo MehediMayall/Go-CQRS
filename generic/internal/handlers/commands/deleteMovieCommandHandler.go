@@ -5,16 +5,16 @@ import (
 	repositories "github.com/mehedimayall/go-cqrs/internal/repositories/abstractions"
 )
 
-type DeleteMovieCommand struct {
+type DeleteMovieCommandHandler struct {
 	repo repositories.IWriteRepository[entities.Movie]
 }
 
-func NewDeleteMovieCommand(repo repositories.IWriteRepository[entities.Movie]) *DeleteMovieCommand {
-	return &DeleteMovieCommand{
+func NewDeleteMovieCommand(repo repositories.IWriteRepository[entities.Movie]) *DeleteMovieCommandHandler {
+	return &DeleteMovieCommandHandler{
 		repo: repo,
 	}
 }
 
-func (handler *DeleteMovieCommand) Handle(movieId string) error {
+func (handler *DeleteMovieCommandHandler) Handle(movieId string) error {
 	return handler.repo.Delete(movieId)
 }

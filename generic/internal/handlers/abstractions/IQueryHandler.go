@@ -1,5 +1,5 @@
 package abstractions
 
-type IQueryHandle interface {
+type IQueryHandler interface {
 	Handle() (interface{}, error)
 }
