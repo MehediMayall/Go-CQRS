@@ -60,5 +60,5 @@ Every functions in this file is used to instantiate the dependent objects and in
 
 ### Loose Coupling Through Mediator Pattern 
 Here is an example of how an update operation functions in a loosely coupled manner.
-![Loose Coupling](https://github.com/user-attachments/assets/162e31d3-c547-4814-aa0c-5ee87f401def)
+![Loose Coupling](https://github.com/user-attachments/assets/c4e56878-049a-4e57-954e-c62f08cbe0c1)
 
