@@ -46,10 +46,10 @@ A straightforward Go app that demonstrates the implementation of CQRS (Command Q
 
 ```
 
-***ReadRepository*** has only one responsibility that is to read data from database.
+***ReadRepository*** has only one responsibility that is all of its methods are used to read data from the database.
 It is used to transfer data from database to the application as efficient as possible without changing its state
 
-***WriteRepository*** has only one responsibility that is to write data to database.
+***WriteRepository*** has only one responsibility that is all of its methods are used to write data to the database.
 It is used to transfer data from application to the database in more generic ways. 
 
 ***Manual Dependency Injection***  [dependencies.go] file manages the dependencies of the application.
