@@ -1,5 +1,8 @@
 # Go CQRS Without Library
 A straightforward Go app that demonstrates the implementation of CQRS (Command Query Responsibility Segregation) without requiring any library.
+The aim of this project is to learn how to physically divide classes into two distinct responsibilities, in order to achieve scalability, maintainability and performance.
+It is highly adaptable in navigating complex domains, allowing for independent customization of the data structure for read and write operations.
+
 ![CQRS Architecture](https://github.com/user-attachments/assets/8e889640-63b5-4873-a91e-737aa115a5a3)
 
 
@@ -46,10 +49,10 @@ A straightforward Go app that demonstrates the implementation of CQRS (Command Q
 
 ```
 
-***ReadRepository*** has only one responsibility that is all of its methods are used to read data from the database.
+***ReadRepository*** has only one responsibility, all of its methods are used to read data from the database.
 It is used to transfer data from database to the application as efficient as possible without changing its state.
 
-***WriteRepository*** has only one responsibility that is all of its methods are used to write data to the database.
+***WriteRepository*** has only one responsibility, all of its methods are used to write data to the database.
 It is used to transfer data from application to the database in more generic ways. 
 
 ***Manual Dependency Injection***  [dependencies.go] file manages the dependencies of the application.
